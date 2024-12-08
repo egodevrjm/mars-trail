@@ -1,0 +1,57 @@
+[
+    {
+      "id": "amani",
+      "name": "Dr. Amani",
+      "role": "Botanist",
+      "skills": { "foodProduction": 3, "medicalKnowledge": 1 },
+      "morale": 100,
+      "health": 100,
+      "cost": 100
+    },
+    {
+      "id": "jake",
+      "name": "Jake",
+      "role": "Engineer",
+      "skills": { "repair": 4, "construction": 3 },
+      "morale": 90,
+      "health": 100,
+      "cost": 120
+    },
+    {
+      "id": "leo",
+      "name": "Leo",
+      "role": "Medic",
+      "skills": { "medicalKnowledge": 5, "moraleBoost": 2 },
+      "morale": 95,
+      "health": 90,
+      "cost": 150
+    },
+    {
+      "id": "sasha",
+      "name": "Sasha",
+      "role": "Geologist",
+      "skills": { "mining": 4, "terrainKnowledge": 3 },
+      "morale": 85,
+      "health": 100,
+      "cost": 110
+    },
+    {
+      "id": "zara",
+      "name": "Zara",
+      "role": "Pilot",
+      "skills": { "navigation": 4, "terrainKnowledge": 2 },
+      "morale": 100,
+      "health": 100,
+      "cost": 130
+    },
+    {
+      "id": "mohammed",
+      "name": "Mohammed",
+      "role": "Mechanic",
+      "skills": { "repair": 5, "construction": 2 },
+      "morale": 80,
+      "health": 100,
+      "cost": 140
+    }
+  ]
+  

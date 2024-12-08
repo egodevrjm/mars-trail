@@ -1,0 +1,9 @@
+{
+    "distanceToWaterSource": 1000,
+    "terrainTypes": ["rocky", "sandy", "dust-storm-prone"],
+    "knownLandmarks": [
+      {"name": "Crater A", "distance": 200},
+      {"name": "Dune Fields", "distance": 500}
+    ]
+  }
+  

@@ -1,0 +1,14 @@
+[
+    { "id": "food", "name": "Food Rations", "cost": 5, "space": 1 },
+    { "id": "water", "name": "Water Canisters", "cost": 3, "space": 1 },
+    { "id": "solar_panel", "name": "Solar Panels", "cost": 50, "space": 5 },
+    { "id": "battery", "name": "Batteries", "cost": 30, "space": 2 },
+    { "id": "construction_materials", "name": "Construction Materials", "cost": 10, "space": 2 },
+    { "id": "medical_supplies", "name": "Medical Supplies", "cost": 20, "space": 2 },
+    { "id": "communication_device", "name": "Communication Devices", "cost": 40, "space": 3 },
+    { "id": "navigation_device", "name": "Navigation Devices", "cost": 30, "space": 2 },
+    { "id": "terrain_analyzer", "name": "Terrain Analyzer", "cost": 25, "space": 1 },
+    { "id": "robotic_arm", "name": "Robotic Arm", "cost": 40, "space": 3 },
+    { "id": "drone", "name": "Drones", "cost": 60, "space": 4 }
+  ]
+  

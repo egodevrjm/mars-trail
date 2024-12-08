@@ -1,0 +1,7 @@
+{
+  "food": 200,
+  "water": 150,
+  "energy": 100,
+  "constructionMaterials": 50,
+  "medicalSupplies": 30
+}

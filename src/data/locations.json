@@ -1,0 +1,58 @@
+{
+  "totalDistance": 5000,
+  "locations": [
+    {
+      "id": "landing_site",
+      "name": "Landing Site",
+      "description": "Your initial landing location",
+      "distance": 0,
+      "type": "checkpoint"
+    },
+    {
+      "id": "outpost_alpha",
+      "name": "Outpost Alpha",
+      "description": "Small research outpost with basic trading",
+      "distance": 500,
+      "type": "trading_post",
+      "trades": {
+        "food": { "price": 15, "available": 100 },
+        "water": { "price": 20, "available": 80 },
+        "energy": { "price": 25, "available": 50 },
+        "medicalSupplies": { "price": 30, "available": 30 }
+      }
+    },
+    {
+      "id": "valles_marineris",
+      "name": "Valles Marineris Station",
+      "description": "Major supply depot in the canyon",
+      "distance": 1500,
+      "type": "trading_post",
+      "trades": {
+        "food": { "price": 20, "available": 200 },
+        "water": { "price": 15, "available": 150 },
+        "energy": { "price": 20, "available": 100 },
+        "medicalSupplies": { "price": 25, "available": 50 },
+        "constructionMaterials": { "price": 30, "available": 100 }
+      }
+    },
+    {
+      "id": "ice_mines",
+      "name": "Polar Ice Mines",
+      "description": "Water extraction facility with surplus supplies",
+      "distance": 3000,
+      "type": "trading_post",
+      "trades": {
+        "water": { "price": 10, "available": 300 },
+        "energy": { "price": 30, "available": 50 },
+        "food": { "price": 25, "available": 100 }
+      }
+    },
+    {
+      "id": "final_settlement",
+      "name": "Mars Colony One",
+      "description": "Your destination - the main Mars settlement",
+      "distance": 5000,
+      "type": "settlement"
+    }
+  ]
+}

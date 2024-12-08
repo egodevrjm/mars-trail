@@ -1,0 +1,142 @@
+{
+  "chains": [
+    {
+      "id": "equipment_breakdown",
+      "title": "Critical Systems Failure",
+      "sequence": [
+        {
+          "id": "initial_warning",
+          "title": "System Warning",
+          "description": "The life support system is showing unusual readings.",
+          "severity": "low",
+          "choices": [
+            {
+              "text": "Run diagnostics",
+              "skillCheck": { "repair": 2 },
+              "outcome": {
+                "energyChange": -5,
+                "nextEvent": "system_diagnosis"
+              }
+            },
+            {
+              "text": "Ignore warning",
+              "outcome": {
+                "nextEvent": "system_failure"
+              }
+            }
+          ]
+        },
+        {
+          "id": "system_diagnosis",
+          "title": "System Diagnosis",
+          "description": "The diagnostics reveal a failing oxygen recycler.",
+          "severity": "medium",
+          "choices": [
+            {
+              "text": "Attempt repairs now",
+              "skillCheck": { "repair": 3, "engineering": 2 },
+              "requiresResources": {
+                "constructionMaterials": 10
+              },
+              "outcome": {
+                "constructionMaterialsChange": -10,
+                "energyChange": -10,
+                "timeChange": 60,
+                "success": {
+                  "message": "Repairs successful! Crisis averted.",
+                  "moraleChange": 5
+                },
+                "failure": {
+                  "message": "Repairs failed. Situation worsening.",
+                  "nextEvent": "system_failure"
+                }
+              }
+            },
+            {
+              "text": "Switch to backup systems",
+              "outcome": {
+                "energyChange": -20,
+                "nextEvent": "backup_strain"
+              }
+            }
+          ]
+        },
+        {
+          "id": "system_failure",
+          "title": "Critical System Failure",
+          "description": "The oxygen recycling system has failed completely!",
+          "severity": "critical",
+          "choices": [
+            {
+              "text": "Emergency repair attempt",
+              "skillCheck": { "repair": 4, "engineering": 3 },
+              "requiresResources": {
+                "constructionMaterials": 20,
+                "energy": 30
+              },
+              "outcome": {
+                "constructionMaterialsChange": -20,
+                "energyChange": -30,
+                "timeChange": 120,
+                "success": {
+                  "message": "Through heroic effort, the system is restored!",
+                  "moraleChange": 10,
+                  "healthChange": -10
+                },
+                "failure": {
+                  "message": "The system is beyond repair. Crew health declining rapidly.",
+                  "healthChange": -30,
+                  "moraleChange": -20
+                }
+              }
+            },
+            {
+              "text": "Abandon vehicle and proceed on foot",
+              "outcome": {
+                "energyChange": -50,
+                "healthChange": -20,
+                "moraleChange": -30,
+                "delayDistance": 200
+              }
+            }
+          ]
+        },
+        {
+          "id": "backup_strain",
+          "title": "Backup Systems Strain",
+          "description": "The backup systems are working hard but showing signs of stress.",
+          "severity": "high",
+          "choices": [
+            {
+              "text": "Push through to settlement",
+              "outcome": {
+                "energyChange": -30,
+                "healthChange": -15,
+                "moraleChange": -10
+              }
+            },
+            {
+              "text": "Stop for repairs",
+              "skillCheck": { "repair": 3 },
+              "requiresResources": {
+                "constructionMaterials": 15
+              },
+              "outcome": {
+                "constructionMaterialsChange": -15,
+                "timeChange": 90,
+                "success": {
+                  "message": "Repairs complete. Systems stabilized.",
+                  "moraleChange": 5
+                },
+                "failure": {
+                  "message": "Couldn't fix it. Must proceed with caution.",
+                  "energyChange": -20
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

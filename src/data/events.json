@@ -1,0 +1,154 @@
+[
+  {
+    "id": "dust_storm",
+    "title": "Dust Storm Approaching",
+    "description": "A massive dust storm is approaching your position. Visibility is dropping rapidly and the wind is picking up. Your equipment is at risk of damage from the abrasive particles.",
+    "triggerDistance": 1000,
+    "severity": "high",
+    "choices": [
+      {
+        "text": "Take shelter and wait it out",
+        "description": "Find natural shelter and secure equipment. This will delay your journey but is safer.",
+        "skillCheck": {
+          "terrainKnowledge": 2
+        },
+        "outcome": {
+          "energyChange": -10,
+          "delayDistance": 100,
+          "moraleChange": -5,
+          "timeChange": 180
+        },
+        "successMessage": "You found a protected ravine and secured your equipment. The storm passes without major damage.",
+        "failureMessage": "The shelter wasn't adequate. Some equipment was damaged in the storm."
+      },
+      {
+        "text": "Try to outrun it",
+        "description": "Push your vehicles to maximum speed to stay ahead of the storm front.",
+        "skillCheck": {
+          "navigation": 3
+        },
+        "outcome": {
+          "energyChange": -20,
+          "healthChange": -10
+        },
+        "successMessage": "Your navigation skills allowed you to find a path around the storm's edge!",
+        "failureMessage": "The storm caught up with you, causing damage to equipment and crew."
+      }
+    ]
+  },
+  {
+    "id": "equipment_malfunction",
+    "title": "Life Support Malfunction",
+    "description": "The primary life support system is showing critical errors. The backup system is functional but won't last long.",
+    "randomChance": 0.1,
+    "severity": "critical",
+    "choices": [
+      {
+        "text": "Attempt emergency repairs",
+        "description": "Use your engineering skills to fix the system. Requires construction materials.",
+        "skillCheck": {
+          "repair": 3
+        },
+        "requiresResources": {
+          "constructionMaterials": 15
+        },
+        "outcome": {
+          "constructionMaterialsChange": -15,
+          "energyChange": -10
+        },
+        "successMessage": "The repairs are successful! Life support systems are back online.",
+        "failureMessage": "The repairs failed and you lost valuable materials in the attempt."
+      },
+      {
+        "text": "Reroute through backup systems",
+        "description": "A temporary solution that will strain other systems.",
+        "skillCheck": {
+          "repair": 2,
+          "engineering": 2
+        },
+        "outcome": {
+          "energyChange": -25,
+          "healthChange": -5
+        },
+        "successMessage": "You successfully rerouted the systems with minimal loss of efficiency.",
+        "failureMessage": "The backup systems are straining and crew health is suffering."
+      }
+    ]
+  },
+  {
+    "id": "resource_cache",
+    "title": "Abandoned Research Station",
+    "description": "You've discovered an abandoned research station. It might contain valuable supplies, but the airlock appears damaged.",
+    "triggerDistance": 2500,
+    "severity": "low",
+    "choices": [
+      {
+        "text": "Attempt to breach the airlock",
+        "description": "Use engineering skills to safely open the airlock. Could yield significant resources.",
+        "skillCheck": {
+          "engineering": 3,
+          "repair": 2
+        },
+        "outcome": {
+          "foodChange": 30,
+          "waterChange": 25,
+          "medicalSuppliesChange": 15,
+          "moraleChange": 10,
+          "energyChange": -10
+        },
+        "successMessage": "You successfully breached the airlock and found a treasure trove of supplies!",
+        "failureMessage": "The airlock mechanism was too damaged. You wasted energy and time."
+      },
+      {
+        "text": "Search for external storage",
+        "description": "Look for external storage units that might be more accessible.",
+        "skillCheck": {
+          "terrainKnowledge": 2
+        },
+        "outcome": {
+          "foodChange": 15,
+          "waterChange": 10,
+          "moraleChange": 5
+        },
+        "successMessage": "You found some external storage containers with useful supplies.",
+        "failureMessage": "The external storage was empty or too damaged to access."
+      }
+    ]
+  },
+  {
+    "id": "medical_emergency",
+    "title": "Radiation Sickness",
+    "description": "A crew member is showing signs of radiation exposure. They need immediate medical attention.",
+    "randomChance": 0.08,
+    "severity": "high",
+    "choices": [
+      {
+        "text": "Provide medical treatment",
+        "description": "Use medical supplies to treat the symptoms.",
+        "skillCheck": {
+          "medicalKnowledge": 3
+        },
+        "requiresResources": {
+          "medicalSupplies": 10
+        },
+        "outcome": {
+          "medicalSuppliesChange": -10,
+          "healthChange": 15
+        },
+        "successMessage": "The treatment was successful and the crew member is recovering.",
+        "failureMessage": "The treatment was only partially effective. The crew member's health remains poor."
+      },
+      {
+        "text": "Push on to the next settlement",
+        "description": "Risk the crew member's health to reach professional medical care.",
+        "outcome": {
+          "healthChange": -20,
+          "moraleChange": -15,
+          "energyChange": -10
+        },
+        "successMessage": "You made it to the settlement, but at a cost to crew health.",
+        "failureMessage": "The delay was too long and the crew member's condition worsened significantly."
+      }
+    ]
+  }
+]

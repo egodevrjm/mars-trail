@@ -1,0 +1,159 @@
+{
+  "relationshipTypes": {
+    "friendly": {
+      "moraleBonus": 2,
+      "skillBonus": 1,
+      "description": "Work well together"
+    },
+    "rivalry": {
+      "moralePenalty": -2,
+      "skillPenalty": -1,
+      "description": "Competitive relationship"
+    },
+    "conflict": {
+      "moralePenalty": -3,
+      "skillPenalty": -2,
+      "description": "Difficult working relationship"
+    },
+    "professional": {
+      "skillBonus": 1,
+      "description": "Efficient working relationship"
+    },
+    "mentor": {
+      "skillBonus": 2,
+      "moraleBonus": 1,
+      "description": "Teaching relationship"
+    }
+  },
+  "personalityTraits": {
+    "optimistic": {
+      "moraleBonus": 2,
+      "moraleInfluence": 1
+    },
+    "pessimistic": {
+      "moralePenalty": -1,
+      "moraleInfluence": -1
+    },
+    "leader": {
+      "moraleInfluence": 2,
+      "skillBonus": 1
+    },
+    "loner": {
+      "personalMoraleBonus": 1,
+      "teamMoralePenalty": -1
+    },
+    "innovative": {
+      "skillBonus": 1,
+      "resourceEfficiency": 1
+    }
+  },
+  "crewEvents": [
+    {
+      "id": "leadership_challenge",
+      "title": "Leadership Dispute",
+      "description": "Two crew members disagree on how to handle the current situation.",
+      "trigger": {
+        "conditions": ["hasLeader", "hasRivalry"],
+        "randomChance": 0.1
+      },
+      "choices": [
+        {
+          "text": "Support the designated leader",
+          "outcome": {
+            "leaderMoraleBonus": 5,
+            "rivalMoralePenalty": -5,
+            "teamEffect": {
+              "type": "split",
+              "duration": 180
+            }
+          }
+        },
+        {
+          "text": "Find a compromise",
+          "skillCheck": {
+            "moraleBoost": 3
+          },
+          "outcome": {
+            "success": {
+              "message": "The crew finds common ground",
+              "moraleChange": 5,
+              "relationshipChange": "professional"
+            },
+            "failure": {
+              "message": "The attempt at compromise creates more tension",
+              "moraleChange": -5,
+              "relationshipChange": "conflict"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "shared_interest",
+      "title": "Common Ground",
+      "description": "Two crew members discover a shared interest or background.",
+      "trigger": {
+        "conditions": ["differentRoles", "neutralRelationship"],
+        "randomChance": 0.15
+      },
+      "outcome": {
+        "relationshipChange": "friendly",
+        "moraleBonus": 5,
+        "skillBonus": {
+          "duration": 360,
+          "amount": 1
+        }
+      }
+    },
+    {
+      "id": "mentorship_opportunity",
+      "title": "Knowledge Sharing",
+      "description": "A more experienced crew member could teach their skills to another.",
+      "trigger": {
+        "conditions": ["skillGap", "friendlyOrProfessional"],
+        "randomChance": 0.1
+      },
+      "choices": [
+        {
+          "text": "Encourage mentorship",
+          "timeRequired": 60,
+          "outcome": {
+            "success": {
+              "relationshipChange": "mentor",
+              "skillTransfer": {
+                "amount": 1,
+                "duration": "permanent"
+              },
+              "moraleBonus": 5
+            },
+            "failure": {
+              "moraleChange": -2,
+              "timeWasted": 30
+            }
+          }
+        },
+        {
+          "text": "Focus on immediate tasks",
+          "outcome": {
+            "efficiencyBonus": 2,
+            "duration": 120
+          }
+        }
+      ]
+    }
+  ],
+  "skillSynergies": {
+    "repair": {
+      "engineering": 1.5,
+      "mechanics": 1.3
+    },
+    "medical": {
+      "biology": 1.4,
+      "chemistry": 1.2
+    },
+    "navigation": {
+      "astronomy": 1.3,
+      "geology": 1.2
+    }
+  }
+}
